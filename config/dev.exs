@@ -29,7 +29,8 @@ config :logger, :console, format: "[$level] $message\n"
 # Configure your database
 config :data_noms, DataNoms.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "ecto",
+  password: "ecto",
   database: "data_noms_dev",
-  size: 10 # The amount of database connections in the pool
+  size: 10, # The amount of database connections in the pool
+  pool: Ecto.Adapters.SQL.Sandbox

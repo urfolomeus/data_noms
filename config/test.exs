@@ -12,7 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :data_noms, DataNoms.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "ecto",
+  password: "ecto",
   database: "data_noms_test",
-  size: 1 # Use a single connection for transactional tests
+  size: 1, # Use a single connection for transactional tests
+  pool: Ecto.Adapters.SQL.Sandbox
