@@ -20,7 +20,7 @@ defmodule DataNoms.DataSourceController do
     changeset = DataSource.changeset(%DataSource{}, data_source_params)
 
     if changeset.valid? do
-      Repo.insert(changeset)
+      Repo.insert!(changeset)
 
       conn
       |> put_flash(:info, "DataSource created successfully.")
@@ -46,7 +46,7 @@ defmodule DataNoms.DataSourceController do
     changeset = DataSource.changeset(data_source, data_source_params)
 
     if changeset.valid? do
-      Repo.update(changeset)
+      Repo.update!(changeset)
 
       conn
       |> put_flash(:info, "DataSource updated successfully.")
@@ -58,7 +58,7 @@ defmodule DataNoms.DataSourceController do
 
   def delete(conn, %{"id" => id}) do
     data_source = Repo.get(DataSource, id)
-    Repo.delete(data_source)
+    Repo.delete!(data_source)
 
     conn
     |> put_flash(:info, "DataSource deleted successfully.")
