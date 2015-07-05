@@ -1,22 +1,40 @@
-<h2>Show data_source</h2>
+<h2><%= @data_source.name %></h2>
 
-<ul>
+<div class="actions">
+  <%= link "Back to data sources", to: data_source_path(@conn, :index) %> |
+  <%= link "Edit", to: data_source_path(@conn, :edit, @data_source) %> |
+  <%= link "Delete", to: data_source_path(@conn, :delete, @data_source), method: :Delete %>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @data_source.name %>
-  </li>
+</div>
 
-  <li>
-    <strong>Url:</strong>
-    <%= @data_source.url %>
-  </li>
+<h3>Origin:</h3>
+<%= link @data_source.url, to: @data_source.url %>
 
-  <li>
-    <strong>FormatType:</strong>
-    <%= @data_source.format_type %>
-  </li>
+<h3>Errors</h3>
 
-</ul>
+<div class="lint-results">
+  <%# if @data_source.linter.error_messages.empty? %>
+    <p class="no-messages">
+      No errors - <%#= link 'View JSON', to: data_source_path(@data_source, format: :json) %>
+    </p>
+  <%# end %>
+  <%# @data_source.linter.error_messages.each do |error_message| %>
+    <p class="error"><%#= error_message %></p>
+  <%# end %>
 
-<%= link "Back", to: data_source_path(@conn, :index) %>
+  <h3>Warnings</h3>
+  <%# if @data_source.linter.warning_messages.empty? %>
+    <p class="no-messages">There were no warnings.</p>
+  <%# end %>
+  <%# @data_source.linter.warning_messages.each do |warning_message| %>
+    <p class="warning"><%#= warning_message %></p>
+  <%# end %>
+
+  <h3>Info</h3>
+  <%# if @data_source.linter.info_messages.empty? %>
+    <p class="no-messages">There were no info messages.</p>
+  <%# end %>
+  <%# @data_source.linter.info_messages.each do |info_message| %>
+    <p class="info"><%#= info_message %></p>
+  <%# end %>
+</div>

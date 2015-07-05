@@ -1,6 +1,5 @@
-<h2>Edit data_source</h2>
+<h2>Edit data source</h2>
 
 <%= render "form.html", changeset: @changeset,
-                        action: data_source_path(@conn, :update, @data_source) %>
-
-<%= link "Back", to: data_source_path(@conn, :index) %>
+                        action: data_source_path(@conn, :update, @data_source),
+                        cancel_path: data_source_path(@conn, :show, @data_source) %>

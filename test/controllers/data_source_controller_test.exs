@@ -12,12 +12,12 @@ defmodule DataNoms.DataSourceControllerTest do
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, data_source_path(conn, :index)
-    assert html_response(conn, 200) =~ "Listing data_sources"
+    assert html_response(conn, 200) =~ "Data sources"
   end
 
   test "renders form for new resources", %{conn: conn} do
     conn = get conn, data_source_path(conn, :new)
-    assert html_response(conn, 200) =~ "New data_source"
+    assert html_response(conn, 200) =~ "New data source"
   end
 
   test "creates resource and redirects when data is valid", %{conn: conn} do
@@ -28,19 +28,19 @@ defmodule DataNoms.DataSourceControllerTest do
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
     conn = post conn, data_source_path(conn, :create), data_source: @invalid_attrs
-    assert html_response(conn, 200) =~ "New data_source"
+    assert html_response(conn, 200) =~ "New data source"
   end
 
   test "shows chosen resource", %{conn: conn} do
-    data_source = Repo.insert! %DataSource{}
+    data_source = Repo.insert! %DataSource{name: "Test source", url: "/test/url"}
     conn = get conn, data_source_path(conn, :show, data_source)
-    assert html_response(conn, 200) =~ "Show data_source"
+    assert html_response(conn, 200) =~ "Test source"
   end
 
   test "renders form for editing chosen resource", %{conn: conn} do
     data_source = Repo.insert! %DataSource{}
     conn = get conn, data_source_path(conn, :edit, data_source)
-    assert html_response(conn, 200) =~ "Edit data_source"
+    assert html_response(conn, 200) =~ "Edit data source"
   end
 
   test "updates chosen resource and redirects when data is valid", %{conn: conn} do
@@ -53,7 +53,7 @@ defmodule DataNoms.DataSourceControllerTest do
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
     data_source = Repo.insert! %DataSource{}
     conn = put conn, data_source_path(conn, :update, data_source), data_source: @invalid_attrs
-    assert html_response(conn, 200) =~ "Edit data_source"
+    assert html_response(conn, 200) =~ "Edit data source"
   end
 
   test "deletes chosen resource", %{conn: conn} do

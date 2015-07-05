@@ -1,30 +1,22 @@
-<h2>Listing data_sources</h2>
+<h2>Data sources</h2>
+
+<%= link "New data source", to: data_source_path(@conn, :new) %>
 
 <table class="table">
   <thead>
     <tr>
+      <th>Format</th>
       <th>Name</th>
       <th>Url</th>
-      <th>FormatType</th>
-
-      <th></th>
     </tr>
   </thead>
   <tbody>
-<%= for data_source <- @data_sources do %>
-    <tr>
-      <td><%= data_source.name %></td>
-      <td><%= data_source.url %></td>
-      <td><%= data_source.format_type %></td>
-
-      <td class="text-right">
-        <%= link "Show", to: data_source_path(@conn, :show, data_source), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: data_source_path(@conn, :edit, data_source), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: data_source_path(@conn, :delete, data_source), method: :delete, class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
-<% end %>
+    <%= for data_source <- @data_sources do %>
+      <tr>
+        <td><%= data_source.format_type %></td>
+        <td><%= link data_source.name, to: data_source_path(@conn, :show, data_source) %></td>
+        <td><%= link data_source.url, to: data_source.url %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
-
-<%= link "New data_source", to: data_source_path(@conn, :new) %>
