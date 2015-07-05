@@ -1,0 +1,22 @@
+<h2>Show data_source</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @data_source.name %>
+  </li>
+
+  <li>
+    <strong>Url:</strong>
+    <%= @data_source.url %>
+  </li>
+
+  <li>
+    <strong>FormatType:</strong>
+    <%= @data_source.format_type %>
+  </li>
+
+</ul>
+
+<%= link "Back", to: data_source_path(@conn, :index) %>

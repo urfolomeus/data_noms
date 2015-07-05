@@ -16,6 +16,7 @@ defmodule DataNoms.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/data_sources", DataSourceController
   end
 
   # Other scopes may use custom stacks.
